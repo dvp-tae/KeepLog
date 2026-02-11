@@ -227,12 +227,12 @@ export default function Home() {
             <Hello direction="row" align="center">
               {Names.map((name, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <Text variant="h3" color="text" key={index}>
                       {name}
                     </Text>
                     {name === "\n" && "\u00A0"}
-                  </>
+                  </div>
                 );
               })}
             </Hello>

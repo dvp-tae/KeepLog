@@ -66,7 +66,13 @@ const Nav = styled.div`
   gap: var(--gap-1);
 `;
 
-const NavLink = styled(Link)<{ active?: boolean }>`
+interface NavLinkProps {
+  active?: boolean;
+}
+
+const NavLink = styled(Link, {
+  shouldForwardProp: (prop) => prop != "active",
+})<NavLinkProps>`
   position: relative;
   font-size: 0.875rem;
   font-weight: 500;
