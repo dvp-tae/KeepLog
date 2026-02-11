@@ -1,0 +1,110 @@
+@import url("./reset.css");
+
+body {
+  font-family:
+    var(--font-pretendard),
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+}
+
+:root {
+  --font-scale: 1;
+
+  --gap-1: 0.25rem; /* 4px */
+  --gap-2: 0.5rem; /* 8px */
+  --gap-3: 0.75rem; /* 12px */
+  --gap-4: 1rem; /* 16px */
+  --gap-5: 1.25rem; /* 20px */
+  --gap-6: 1.5rem; /* 24px */
+  --gap-7: 1.75rem; /* 28px */
+  --gap-8: 2rem; /* 32px */
+  --gap-9: 2.25rem; /* 36px */
+  --gap-10: 2.5rem; /* 40px */  
+  --gap-11: 2.75rem; /* 44px */
+  --gap-12: 3rem; /* 48px */
+
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-5: 20px;
+  --radius-6: 24px;
+  --radius-7: 28px;
+  --radius-8: 32px;
+  --radius-9: 36px;
+  --radius-10: 40px;
+  --radius-11: 44px;
+  --radius-12: 48px;
+  --radius-25: 100px;
+
+  --padding-1: 0.25rem; /* 4px */
+  --padding-2: 0.5rem; /* 8px */
+  --padding-3: 0.75rem; /* 12px */
+  --padding-4: 1rem; /* 16px */
+  --padding-5: 1.25rem; /* 20px */
+  --padding-6: 1.5rem; /* 24px */
+  --padding-7: 1.75rem; /* 28px */
+  --padding-8: 2rem; /* 32px */
+  --padding-9: 2.25rem; /* 36px */
+  --padding-10: 2.5rem; /* 40px */
+  --padding-11: 2.75rem; /* 44px */
+  --padding-40: 10rem; /* 160px */  
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-scale: 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-scale: 0.825;
+  }
+}
+
+/* 
+시각적으로 숨기고 스크린 리더에는 읽히도록 하기 위함
+웹 접근성 표준 (WCAG) 2.1 준수하기 위한 일반적인 패턴
+*/
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+body.theme-changing * {
+  transition: none;
+}
+
+button {
+  scale: 1;
+  transition: scale 0.1s ease-in-out;
+}
+
+button:hover {
+  scale: 1.05;
+}
+
+button:active {
+  scale: 0.95;
+}
+
+button:focus {
+  scale: 1;
+}
