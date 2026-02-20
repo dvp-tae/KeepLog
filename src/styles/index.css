@@ -20,6 +20,10 @@ body {
 
 :root {
   --font-scale: 1;
+  --scrollbar-size: 10px;
+  --scrollbar-track: #f3f4f6;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
 
   --gap-1: 0.25rem; /* 4px */
   --gap-2: 0.5rem; /* 8px */
@@ -30,7 +34,7 @@ body {
   --gap-7: 1.75rem; /* 28px */
   --gap-8: 2rem; /* 32px */
   --gap-9: 2.25rem; /* 36px */
-  --gap-10: 2.5rem; /* 40px */  
+  --gap-10: 2.5rem; /* 40px */
   --gap-11: 2.75rem; /* 44px */
   --gap-12: 3rem; /* 48px */
 
@@ -59,7 +63,13 @@ body {
   --padding-9: 2.25rem; /* 36px */
   --padding-10: 2.5rem; /* 40px */
   --padding-11: 2.75rem; /* 44px */
-  --padding-40: 10rem; /* 160px */  
+  --padding-40: 10rem; /* 160px */
+}
+
+html.dark {
+  --scrollbar-track: #111827;
+  --scrollbar-thumb: #374151;
+  --scrollbar-thumb-hover: #4b5563;
 }
 
 @media (max-width: 768px) {
@@ -88,8 +98,23 @@ body {
   width: 1px;
 }
 
-body.theme-changing * {
-  transition: none;
+html.theme-changing,
+html.theme-changing body,
+html.theme-changing body * {
+  transition:
+    background-color 0.28s ease,
+    background 0.28s ease,
+    color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-changing,
+  html.theme-changing body,
+  html.theme-changing body * {
+    transition: none;
+  }
 }
 
 button {
@@ -107,4 +132,28 @@ button:active {
 
 button:focus {
   scale: 1;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }

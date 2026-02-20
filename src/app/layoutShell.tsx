@@ -11,11 +11,18 @@ import { usePathname } from "next/navigation";
 
 const PageBackground = styled.div`
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
   background: ${({ theme }) => theme.colors.background};
   color: ${({ theme }) => theme.colors.text};
   transition:
     background 0.3s ease,
     color 0.3s ease;
+`;
+
+const Main = styled.main`
+  width: 100%;
+  flex: 1;
 `;
 
 const Header = styled.header`
@@ -44,7 +51,6 @@ const HeaderInner = styled.nav`
 
 const Brand = styled.button`
   border: none;
-  background: transparent;
   padding: 0;
   cursor: pointer;
   display: flex;
@@ -93,7 +99,7 @@ const NavLink = styled(Link, {
   ${({ active, theme }) =>
     active &&
     `
-    background: ${theme.colors.primary04};
+    background: ${theme.colors.tagBg};
     color: ${theme.colors.text};
   `}
 `;
@@ -188,9 +194,11 @@ export function LayoutShell({ children }: { children: React.ReactNode }) {
         </Wrapper>
       </Header>
 
-      <Wrapper maxWidth={"100%"} center fullHeight={false}>
-        {children}
-      </Wrapper>
+      <Main>
+        <Wrapper maxWidth={"100%"} center fullHeight={false}>
+          {children}
+        </Wrapper>
+      </Main>
 
       <Footer>
         <Wrapper maxWidth={768} center>

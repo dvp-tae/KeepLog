@@ -7,18 +7,15 @@ export const Container = styled.div<WrapperProps>`
   margin: ${({ center }) => (center ? "0 auto" : "0")};
   max-width: ${({ maxWidth }) =>
     typeof maxWidth === "number" ? `${maxWidth}px` : maxWidth};
-  // 5rem은 헤더 높이, 80px은 푸터 높이
-  height: ${({ theme, fullHeight }) => {
-    if (theme.isMobile && fullHeight) {
-      return `calc(100dvh - 57px)`;
-    }
-    if (fullHeight) {
-      return `calc(100dvh - 57px)`;
-    }
-    return "auto";
-  }};
-  background-color: ${({ backgroundColor }) =>
-    backgroundColor ?? "transparent"};
+  /*
+   * 고정 height를 주면 콘텐츠가 길 때 footer 위로 겹칠 수 있어
+   * fullHeight는 최소 높이 보장(min-height)으로만 처리합니다.
+   */
+  min-height: ${({ fullHeight }) =>
+    fullHeight ? "calc(100dvh - 57px)" : "auto"};
+  height: auto;
+  background-color: ${({ theme, backgroundColor }) =>
+    backgroundColor ?? theme.colors.background};
 
   ${({ padding, paddingTop, paddingRight, paddingBottom, paddingLeft }) =>
     padding

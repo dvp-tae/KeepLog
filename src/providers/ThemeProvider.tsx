@@ -75,7 +75,15 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }, [themeMode, mounted]);
 
   const toggleTheme = () => {
+    document.body.classList.add("theme-changing");
+    document.documentElement.classList.add("theme-changing");
+
     setThemeMode((prev) => (prev === "light" ? "dark" : "light"));
+
+    window.setTimeout(() => {
+      document.body.classList.remove("theme-changing");
+      document.documentElement.classList.remove("theme-changing");
+    }, 280);
   };
 
   const baseTheme = themeMode === "light" ? LIGHT_THEME : DARK_THEME;

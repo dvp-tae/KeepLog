@@ -6,6 +6,10 @@ import Wrapper from "@/components/layout/Wrapper";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
+const PageWrapper = styled(Wrapper)`
+  background-color: ${({ theme }) => theme.colors.background};
+`;
+
 const Hello = styled(Flex)`
   span {
     animation: wave 2s ease infinite;
@@ -178,6 +182,17 @@ const PostRow = styled(Link)`
     color: ${({ theme }) => theme.colors.primary08};
   }
 
+  .arrow {
+    display: inline-block;
+    margin-left: 0.2rem;
+    transition: transform 0.15s ease;
+    will-change: transform;
+  }
+
+  &:hover .arrow {
+    transform: translateX(8px);
+  }
+
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     align-items: flex-start;
@@ -215,7 +230,7 @@ const Names = ["안", "녕", "하", "세", "요"];
 
 export default function Home() {
   return (
-    <Wrapper maxWidth={"100%"} center fullHeight={false}>
+    <PageWrapper maxWidth={"100%"} center fullHeight={false}>
       <HeroCard>
         <Flex
           direction="column"
@@ -309,7 +324,8 @@ export default function Home() {
                   color="primary05"
                   style={{ fontWeight: 600, marginTop: "var(--gap-2)" }}
                 >
-                  더 보기 →
+                  <span>더 보기</span>
+                  <span className="arrow">→</span>
                 </Text>
               </Flex>
               <Text variant="caption" color="gray70">
@@ -319,6 +335,6 @@ export default function Home() {
           ))}
         </Flex>
       </PostsSection>
-    </Wrapper>
+    </PageWrapper>
   );
 }

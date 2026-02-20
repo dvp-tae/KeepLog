@@ -1,14 +1,12 @@
 export const LIGHT_THEME = {
   colors: {
-    // 배경 & 표면
-    background: "#FFFFFF", // 전체 페이지 배경
-    surface: "#FFFFFF", // 카드 / 컨텐츠 영역
-    surfaceSoft: "#F8FAFF", // 살짝 구분되는 섹션 배경
+    background: "#FFFFFF",
+    surface: "#FFFFFF",
+    surfaceSoft: "#F8FAFF",
     border: "#E0E6F0",
     text: "#1c1c1c",
     muted: "#6B7280",
 
-    // 포인트 컬러 (블루 계열)
     primary00: "#F8FCFF",
     primary01: "#EEF7FF",
     primary02: "#E3F1FF",
@@ -21,7 +19,6 @@ export const LIGHT_THEME = {
     primary09: "#2563EB",
     primary10: "#1D4ED8",
 
-    // 중립 계열
     gray05: "#F9FAFB",
     gray10: "#E5E7EB",
     gray20: "#D1D5DB",
@@ -34,9 +31,8 @@ export const LIGHT_THEME = {
     gray90: "#020617",
     gray100: "#02040B",
 
-    // 태그 / 배지용
-    tagBg: "#E5EDFF",
-    tagText: "#1D4ED8",
+    tagBg: "#e6f2ff",
+    tagText: "#1f54a3",
   },
 
   typography: {
@@ -77,15 +73,13 @@ export const LIGHT_THEME = {
 
 export const DARK_THEME = {
   colors: {
-    // 배경 & 표면
-    background: "#1c1c1c", // 전체 페이지 배경
-    surface: "#0B1120", // 메인 카드 영역
-    surfaceSoft: "#111827", // 섹션 배경
+    background: "#1b1f28",
+    surface: "#0B1120",
+    surfaceSoft: "#111827",
     border: "#1F2937",
     text: "#ffffff",
     muted: "#9CA3AF",
 
-    // 포인트 컬러 (다크에서 살짝 더 선명하게)
     primary00: "#0B1120",
     primary01: "#111827",
     primary02: "#1E293B",
@@ -98,7 +92,6 @@ export const DARK_THEME = {
     primary09: "#BFDBFE",
     primary10: "#DBEAFE",
 
-    // 중립 계열
     gray05: "#020617",
     gray10: "#030712",
     gray20: "#02081E",
@@ -111,9 +104,8 @@ export const DARK_THEME = {
     gray90: "#E5E7EB",
     gray100: "#F9FAFB",
 
-    // 태그 / 배지용
-    tagBg: "#111827",
-    tagText: "#E5E7EB",
+    tagBg: "#2b303b",
+    tagText: "#bddeff",
   },
 
   typography: {
