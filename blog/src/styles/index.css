@@ -1,0 +1,220 @@
+@import url("./reset.css");
+
+body {
+  font-family:
+    var(--font-pretendard),
+    -apple-system,
+    BlinkMacSystemFont,
+    system-ui,
+    Roboto,
+    "Helvetica Neue",
+    "Segoe UI",
+    "Apple SD Gothic Neo",
+    "Noto Sans KR",
+    "Malgun Gothic",
+    "Apple Color Emoji",
+    "Segoe UI Emoji",
+    "Segoe UI Symbol",
+    sans-serif;
+}
+
+:root {
+  --font-scale: 1;
+  --scrollbar-size: 10px;
+  --scrollbar-track: #f3f4f6;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+
+  --gap-1: 0.25rem; /* 4px */
+  --gap-2: 0.5rem; /* 8px */
+  --gap-3: 0.75rem; /* 12px */
+  --gap-4: 1rem; /* 16px */
+  --gap-5: 1.25rem; /* 20px */
+  --gap-6: 1.5rem; /* 24px */
+  --gap-7: 1.75rem; /* 28px */
+  --gap-8: 2rem; /* 32px */
+  --gap-9: 2.25rem; /* 36px */
+  --gap-10: 2.5rem; /* 40px */
+  --gap-11: 2.75rem; /* 44px */
+  --gap-12: 3rem; /* 48px */
+
+  --radius-1: 4px;
+  --radius-2: 8px;
+  --radius-3: 12px;
+  --radius-4: 16px;
+  --radius-5: 20px;
+  --radius-6: 24px;
+  --radius-7: 28px;
+  --radius-8: 32px;
+  --radius-9: 36px;
+  --radius-10: 40px;
+  --radius-11: 44px;
+  --radius-12: 48px;
+  --radius-25: 100px;
+
+  --padding-1: 0.25rem; /* 4px */
+  --padding-2: 0.5rem; /* 8px */
+  --padding-3: 0.75rem; /* 12px */
+  --padding-4: 1rem; /* 16px */
+  --padding-5: 1.25rem; /* 20px */
+  --padding-6: 1.5rem; /* 24px */
+  --padding-7: 1.75rem; /* 28px */
+  --padding-8: 2rem; /* 32px */
+  --padding-9: 2.25rem; /* 36px */
+  --padding-10: 2.5rem; /* 40px */
+  --padding-11: 2.75rem; /* 44px */
+  --padding-40: 10rem; /* 160px */
+}
+
+html.dark {
+  --scrollbar-track: #111827;
+  --scrollbar-thumb: #374151;
+  --scrollbar-thumb-hover: #4b5563;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-scale: 0.9;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --font-scale: 0.825;
+  }
+}
+
+/* 
+시각적으로 숨기고 스크린 리더에는 읽히도록 하기 위함
+웹 접근성 표준 (WCAG) 2.1 준수하기 위한 일반적인 패턴
+*/
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+html.theme-changing,
+html.theme-changing body,
+html.theme-changing body * {
+  transition:
+    background-color 0.28s ease,
+    background 0.28s ease,
+    color 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.theme-changing,
+  html.theme-changing body,
+  html.theme-changing body * {
+    transition: none;
+  }
+}
+
+button {
+  scale: 1;
+  transition: scale 0.1s ease-in-out;
+}
+
+button:hover {
+  scale: 1.05;
+}
+
+button:active {
+  scale: 0.95;
+}
+
+button:focus {
+  scale: 1;
+}
+
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar {
+  width: var(--scrollbar-size);
+  height: var(--scrollbar-size);
+}
+
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.blog-markdown {
+  color: inherit;
+  line-height: 1.8;
+}
+
+.blog-markdown h1,
+.blog-markdown h2,
+.blog-markdown h3,
+.blog-markdown h4,
+.blog-markdown h5,
+.blog-markdown h6 {
+  margin: 1.5rem 0 0.8rem;
+  font-weight: 700;
+}
+
+.blog-markdown p {
+  margin: 0.85rem 0;
+}
+
+.blog-markdown ul,
+.blog-markdown ol {
+  margin: 0.75rem 0;
+  padding-left: 1.25rem;
+  list-style: revert;
+}
+
+.blog-markdown li + li {
+  margin-top: 0.3rem;
+}
+
+.blog-markdown code {
+  padding: 0.1rem 0.35rem;
+  border-radius: var(--radius-2);
+  background: #eef2f7;
+  font-size: 0.9em;
+}
+
+.blog-markdown pre {
+  overflow-x: auto;
+  border-radius: var(--radius-3);
+  padding: var(--padding-4);
+  background: #eef2f7;
+}
+
+.blog-markdown pre code {
+  padding: 0;
+  background: transparent;
+}
+
+.blog-markdown blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #2563eb;
+  color: #6b7280;
+}
+
+.blog-markdown a {
+  color: #2563eb;
+  text-decoration: underline;
+}
