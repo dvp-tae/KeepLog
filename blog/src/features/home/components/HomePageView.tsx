@@ -39,7 +39,7 @@ export default function HomePageView({ posts }: HomePageViewProps) {
       <HeroCard>
         <Flex
           direction="column"
-          align="center"
+          align="flex-start"
           gap="var(--gap-10)"
           justify="center"
         >

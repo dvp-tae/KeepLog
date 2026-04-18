@@ -10,8 +10,9 @@ export const PageWrapper = styled(Wrapper)`
 
 export const Hello = styled(Flex)`
   span {
-    animation: wave 2s ease infinite;
-    animation-iteration-count: infinite;
+    display: inline-block;
+    color: ${({ theme }) => theme.colors.primary08};
+    animation: wave 4.8s ease-in-out infinite;
   }
 
   span:nth-child(1) {
@@ -32,91 +33,74 @@ export const Hello = styled(Flex)`
 
   @keyframes wave {
     0%,
-    40%,
+    70%,
     100% {
       transform: translateY(0);
+      opacity: 0.8;
     }
-    20% {
-      transform: translateY(-15px);
-    }
-    60% {
-      transform: translateY(-5px);
+    12% {
+      transform: translateY(-4px);
+      opacity: 1;
     }
   }
 `;
 
 export const Name = styled(Text)`
-  width: fit-content;
-  background: linear-gradient(
-    90deg,
-    ${({ theme }) => theme.colors.primary08} 0%,
-    ${({ theme }) => theme.colors.primary08} 40%,
-    ${({ theme }) => theme.colors.primary05} 50%,
-    ${({ theme }) => theme.colors.primary08} 60%,
-    ${({ theme }) => theme.colors.primary08} 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s linear infinite;
-  color: transparent;
-  background-clip: text;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  @keyframes shimmer {
-    0% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: -100% 0;
-    }
-  }
+  max-width: 12ch;
 `;
 
 export const HeroCard = styled.section`
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 450px;
+  align-items: flex-end;
+  min-height: clamp(26rem, 70vh, 40rem);
+  padding: clamp(4.5rem, 9vw, 7rem) var(--padding-6) clamp(3rem, 6vw, 5rem);
   background: ${({ theme }) =>
-    `linear-gradient(140deg, ${theme.colors.primary01}11 0%, ${theme.colors.primary02} 35%, ${theme.colors.primary01} 100%)`};
+    theme.colors.background === "#000000"
+      ? "linear-gradient(180deg, rgba(17, 17, 17, 0.96) 0%, rgba(0, 0, 0, 1) 100%)"
+      : "linear-gradient(180deg, rgba(255, 255, 255, 0.88) 0%, rgba(237, 244, 255, 0.8) 100%)"};
+  border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: 768px) {
-    padding: 2.5rem 1.75rem;
+    align-items: center;
+    padding: 5rem var(--padding-4) 3rem;
   }
 `;
 
 export const HeroHeader = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: var(--gap-3);
+  max-width: 42rem;
 `;
 
 export const HeroActions = styled.div`
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 0.75rem;
 `;
 
 export const SocialLinkButton = styled.a`
-  height: 3rem;
-  padding: 0 var(--padding-5);
-  border-radius: var(--radius-4);
+  min-height: 2.875rem;
+  padding: 0 1rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--gap-2);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.94rem;
   font-weight: 500;
   text-decoration: none;
   transition:
     background 0.15s ease,
     box-shadow 0.15s ease,
     transform 0.08s ease,
-    opacity 0.15s ease;
+    opacity 0.15s ease,
+    border-color 0.15s ease;
 
   svg {
     width: 1.1rem;
@@ -124,8 +108,8 @@ export const SocialLinkButton = styled.a`
   }
 
   &:hover {
-    opacity: 0.9;
-    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+    opacity: 0.96;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.1);
     transform: translateY(-1px);
   }
 
@@ -136,44 +120,49 @@ export const SocialLinkButton = styled.a`
 `;
 
 export const GithubButton = styled(SocialLinkButton)`
-  background: #0f172a;
-  color: #f9fafb;
+  background: ${({ theme }) =>
+    theme.colors.background === "#000000" ? theme.colors.surface : theme.colors.text};
+  border-color: ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.background};
 `;
 
 export const LinkedInButton = styled(SocialLinkButton)`
-  background: #0a66c2;
-  color: #f9fafb;
+  background: ${({ theme }) =>
+    theme.colors.background === "#000000" ? "rgba(41, 151, 255, 0.16)" : theme.colors.primary08};
+  color: #f5f5f7;
 `;
 
 export const PostsSection = styled.section`
   width: 100%;
   max-width: 768px;
-  margin: 4rem auto;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
-  user-select: none;
+  gap: var(--gap-9);
+  padding: clamp(3rem, 7vw, 5rem) var(--padding-6) clamp(4rem, 8vw, 6rem);
+
+  @media (max-width: 640px) {
+    padding-left: var(--padding-4);
+    padding-right: var(--padding-4);
+  }
 `;
 
 export const PostRow = styled(Link)`
-  height: fit-content;
   display: grid;
-  grid-template-columns: 20px 1fr auto;
-  align-items: baseline;
-  column-gap: var(--gap-6);
-  row-gap: 0.25rem;
-  padding: var(--padding-4) var(--padding-5);
+  grid-template-columns: 2.2rem minmax(0, 1fr) auto;
+  align-items: start;
+  column-gap: var(--gap-5);
+  row-gap: 0.35rem;
+  padding: var(--padding-5) 0;
   text-decoration: none;
-  border-radius: var(--radius-3);
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
   cursor: pointer;
   transition:
     background-color 0.15s ease,
-    transform 0.15s ease,
     color 0.15s ease;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.gray05};
-    transform: scale(1.02);
+    background-color: transparent;
   }
 
   &:hover .post-title {
@@ -188,22 +177,24 @@ export const PostRow = styled(Link)`
   }
 
   &:hover .arrow {
-    transform: translateX(8px);
+    transform: translateX(5px);
   }
 
   @media (max-width: 640px) {
     grid-template-columns: 1fr;
     align-items: flex-start;
-    row-gap: 0.25rem;
+    row-gap: var(--gap-2);
   }
 `;
 
 export const HeroDescription = styled(Text)`
-  line-height: 1.5;
+  max-width: 36rem;
+  color: ${({ theme }) => theme.colors.muted};
 `;
 
 export const PostIndex = styled(Text)`
   font-weight: 600;
+  color: ${({ theme }) => theme.colors.primary08};
 `;
 
 export const PostTitle = styled(Text)`

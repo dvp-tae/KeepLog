@@ -17,6 +17,8 @@ const getTypographyStyle = (variant: TypographyKey, theme: Theme) => {
   return `
       font-size: calc(${style.fontSize} * var(--font-scale));
       font-weight: ${style.fontWeight};
+      line-height: ${style.lineHeight};
+      letter-spacing: ${style.letterSpacing};
     `;
 };
 

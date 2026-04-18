@@ -16,6 +16,11 @@ body {
     "Segoe UI Emoji",
     "Segoe UI Symbol",
     sans-serif;
+  background: #f5f5f7;
+  color: #1d1d1f;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 :root {
@@ -72,6 +77,11 @@ html.dark {
   --scrollbar-thumb-hover: #4b5563;
 }
 
+html.dark body {
+  background: #000;
+  color: #f5f5f7;
+}
+
 @media (max-width: 768px) {
   :root {
     --font-scale: 0.9;
@@ -117,21 +127,30 @@ html.theme-changing body * {
   }
 }
 
-button {
-  scale: 1;
-  transition: scale 0.1s ease-in-out;
+a,
+button,
+input,
+textarea,
+select {
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
 }
 
-button:hover {
-  scale: 1.05;
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid #0071e3;
+  outline-offset: 3px;
 }
 
-button:active {
-  scale: 0.95;
-}
-
-button:focus {
-  scale: 1;
+::selection {
+  background: rgba(0, 113, 227, 0.18);
 }
 
 html {
@@ -160,7 +179,9 @@ html::-webkit-scrollbar-thumb:hover {
 
 .blog-markdown {
   color: inherit;
+  font-size: calc(1rem * var(--font-scale));
   line-height: 1.8;
+  word-break: keep-all;
 }
 
 .blog-markdown h1,
@@ -169,18 +190,32 @@ html::-webkit-scrollbar-thumb:hover {
 .blog-markdown h4,
 .blog-markdown h5,
 .blog-markdown h6 {
-  margin: 1.5rem 0 0.8rem;
-  font-weight: 700;
+  margin: 2.8rem 0 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+}
+
+.blog-markdown h1 {
+  font-size: calc(2.3rem * var(--font-scale));
+}
+
+.blog-markdown h2 {
+  font-size: calc(1.8rem * var(--font-scale));
+}
+
+.blog-markdown h3 {
+  font-size: calc(1.35rem * var(--font-scale));
 }
 
 .blog-markdown p {
-  margin: 0.85rem 0;
+  margin: 1rem 0;
 }
 
 .blog-markdown ul,
 .blog-markdown ol {
-  margin: 0.75rem 0;
-  padding-left: 1.25rem;
+  margin: 1rem 0;
+  padding-left: 1.4rem;
   list-style: revert;
 }
 
@@ -189,16 +224,16 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-markdown code {
-  padding: 0.1rem 0.35rem;
+  padding: 0.16rem 0.42rem;
   border-radius: var(--radius-2);
-  background: #eef2f7;
-  font-size: 0.9em;
+  background: rgba(17, 17, 19, 0.06);
+  font-size: 0.92em;
 }
 
 .blog-markdown pre {
   overflow-x: auto;
-  border-radius: var(--radius-3);
-  padding: var(--padding-4);
+  border-radius: var(--radius-4);
+  padding: var(--padding-5);
   background: #eef2f7;
 }
 
@@ -208,13 +243,46 @@ html::-webkit-scrollbar-thumb:hover {
 }
 
 .blog-markdown blockquote {
-  margin: 1rem 0;
-  padding-left: 1rem;
-  border-left: 3px solid #2563eb;
-  color: #6b7280;
+  margin: 1.5rem 0;
+  padding-left: 1.1rem;
+  border-left: 3px solid #0071e3;
+  color: rgba(29, 29, 31, 0.68);
 }
 
 .blog-markdown a {
-  color: #2563eb;
+  color: #0066cc;
   text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.blog-markdown hr {
+  margin: 2rem 0;
+  border: 0;
+  border-top: 1px solid rgba(29, 29, 31, 0.12);
+}
+
+.blog-markdown img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-4);
+}
+
+html.dark .blog-markdown code {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+html.dark .blog-markdown pre {
+  background: #111113;
+}
+
+html.dark .blog-markdown blockquote {
+  color: rgba(245, 245, 247, 0.72);
+}
+
+html.dark .blog-markdown hr {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+html.dark .blog-markdown a {
+  color: #8eceff;
 }

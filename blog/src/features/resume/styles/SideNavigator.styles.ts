@@ -18,6 +18,7 @@ export const SideNavRail = styled.aside`
 export const SideNav = styled.nav`
   position: sticky;
   top: 88px;
+  padding-left: var(--gap-2);
 `;
 
 export const SideNavList = styled.ul`
@@ -31,27 +32,29 @@ export const SideNavButton = styled.button`
   width: 100%;
   display: inline-flex;
   align-items: center;
-  min-height: 2.25rem;
-  padding: 0.375rem var(--padding-3);
-  border-radius: var(--radius-2);
+  min-height: 2.5rem;
+  padding: 0.45rem var(--padding-3);
+  border-radius: 999px;
   border: none;
   background: transparent;
   cursor: pointer;
   color: ${({ theme }) => theme.colors.gray50};
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
   transition:
     background-color 0.15s ease,
     color 0.15s ease;
 
   &[data-active="true"] {
-    background: ${({ theme }) => theme.colors.primary03};
-    color: ${({ theme }) => theme.colors.primary08};
+    background: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.text};
     font-weight: 600;
+    box-shadow: inset 0 0 0 1px ${({ theme }) => theme.colors.border};
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.primary03};
-    color: ${({ theme }) => theme.colors.primary08};
+    background: ${({ theme }) => theme.colors.surface};
+    color: ${({ theme }) => theme.colors.text};
   }
 `;

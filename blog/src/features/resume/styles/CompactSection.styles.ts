@@ -34,10 +34,8 @@ export const HeaderIcon = styled.span`
 `;
 
 export const EducationCard = styled.section`
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: var(--radius-3);
-  background: ${({ theme }) => theme.colors.surface};
-  padding: var(--padding-6);
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding: var(--padding-5) 0;
 `;
 
 export const EducationRowTop = styled.div`
@@ -53,16 +51,16 @@ export const EducationRowTop = styled.div`
 
 export const EducationTitle = styled.h3`
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const EducationDetail = styled.p`
   margin: 0.25rem 0 0;
-  font-size: 0.875rem;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: ${({ theme }) => theme.colors.muted};
 `;
 
@@ -71,12 +69,13 @@ export const EducationPeriodPill = styled.span`
   display: inline-flex;
   align-items: center;
   border-radius: 999px;
-  background: ${({ theme }) => theme.colors.tagBg};
+  background: ${({ theme }) => theme.colors.surfaceSoft};
   color: ${({ theme }) => theme.colors.primary08};
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   line-height: 1;
   font-weight: 500;
   padding: 0.35rem 0.75rem;
+  border: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: 740px) {
     justify-self: start;
@@ -92,10 +91,8 @@ export const CertificationList = styled.div`
 `;
 
 export const CertificationCard = styled.article`
-  border-radius: var(--radius-3);
-  background: ${({ theme }) => theme.colors.surfaceSoft};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  padding: var(--padding-6);
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding: var(--padding-5) 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: var(--gap-3);
@@ -104,57 +101,67 @@ export const CertificationCard = styled.article`
 
 export const CertificationTitle = styled.h4`
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 600;
   line-height: 1.3;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const CertificationDetail = styled.p`
   margin: 0.25rem 0 0;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.muted};
 `;
 
 export const CertificationPeriod = styled.span`
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary08};
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 `;
 
 export const AwardsList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--gap-8);
+  gap: var(--gap-5);
 `;
 
-export const AwardItem = styled.article``;
+export const AwardItem = styled.article`
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding-top: var(--padding-5);
+`;
 
 export const AwardPeriod = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.primary08};
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 `;
 
 export const AwardTitle = styled.h4`
   margin: 0.35rem 0 0;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const AwardDetail = styled.p`
   margin: 0.3rem 0 0;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: ${({ theme }) => theme.colors.muted};
 `;
 
 export const ActivityTimeline = styled.div`
   position: relative;
-  margin-left: 0.25rem;
+  margin-left: 0.2rem;
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding-top: var(--padding-5);
 
   &::before {
     content: "";
@@ -188,21 +195,24 @@ export const ActivityItem = styled.article`
 `;
 
 export const ActivityPeriod = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.primary08};
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 `;
 
 export const ActivityTitle = styled.h4`
   margin: 0.35rem 0 0;
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   line-height: 1.3;
-  font-weight: 700;
+  font-weight: 600;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const ActivityDetail = styled.p`
   margin: 0.35rem 0 0;
-  font-size: 0.875rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: ${({ theme }) => theme.colors.muted};
 `;

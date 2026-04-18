@@ -13,7 +13,6 @@ import {
   ThemeToggleButton as HeaderThemeToggleButton,
 } from "@/features/layout/styles/LayoutShell.styles";
 import { useTheme } from "@/providers/ThemeProvider";
-import Image from "next/image";
 import Link from "next/link";
 
 interface HeaderCompoundComponent {
@@ -38,7 +37,6 @@ function HeaderBrand() {
     <Link href="/" legacyBehavior>
       <HeaderBrandButton as="a">
         <Flex direction="row" align="center" gap="var(--gap-1)">
-          <Image src="/images/logo.png" alt="KeepLog" width={40} height={35} />
           <BrandText variant="h3" color="text">
             KeepLog
           </BrandText>

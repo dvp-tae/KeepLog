@@ -6,12 +6,11 @@ export const Section = styled.section`
 `;
 
 export const SectionHeader = styled.header`
-  margin-bottom: var(--gap-5);
+  margin-bottom: var(--gap-6);
   padding-bottom: var(--padding-2);
 
   & span {
-    border-left: 4px solid ${({ theme }) => theme.colors.primary07};
-    padding-left: var(--padding-2);
+    padding-left: 0;
   }
 `;
 
@@ -21,25 +20,27 @@ export const Organization = styled(Flex)`
 `;
 
 export const OrganizationName = styled.div`
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 600;
   line-height: 1.3;
   color: ${({ theme }) => theme.colors.text};
   margin-bottom: 0.25rem;
 `;
 
 export const OrganizationRole = styled.div`
-  font-size: 0.875rem;
+  font-size: 0.82rem;
   font-weight: 400;
   line-height: 1.4;
   color: ${({ theme }) => theme.colors.primary08};
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 `;
 
 export const TimelineList = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-6);
+  gap: var(--gap-5);
 `;
 
 export const TimelineItem = styled.article`
@@ -47,9 +48,8 @@ export const TimelineItem = styled.article`
   gap: var(--gap-4);
   position: relative;
   min-height: 2rem;
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  border-radius: var(--radius-3);
-  padding: var(--padding-6);
+  border-top: 1px solid ${({ theme }) => theme.colors.border};
+  padding: var(--padding-5) 0;
 `;
 
 export const TimelineContent = styled.div`
@@ -57,7 +57,7 @@ export const TimelineContent = styled.div`
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: var(--gap-2);
+  gap: var(--gap-3);
 `;
 
 export const RowTop = styled.div`
@@ -73,32 +73,34 @@ export const RowTop = styled.div`
 `;
 
 export const TimelineTitle = styled.div`
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.15rem;
+  font-weight: 600;
   line-height: 1.3;
   color: ${({ theme }) => theme.colors.text};
 `;
 
 export const TimelineSubTitle = styled.div`
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: 400;
   line-height: 1.4;
-  color: ${({ theme }) => theme.colors.primary08};
+  color: ${({ theme }) => theme.colors.muted};
   margin-top: 0.25rem;
 `;
 
 export const TimelinePeriod = styled.div`
   font-size: 0.75rem;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray30};
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.primary08};
   white-space: nowrap;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 `;
 
 export const TimelineSummary = styled.div`
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.4;
-  color: ${({ theme }) => theme.colors.tagText};
+  line-height: 1.55;
+  color: ${({ theme }) => theme.colors.text};
   margin-top: 0.125rem;
 `;
 
@@ -110,9 +112,9 @@ export const SkillPills = styled.div`
 `;
 
 export const SkillPill = styled.span`
-  padding: 0.25rem 0.625rem;
+  padding: 0.34rem 0.65rem;
   border-radius: 999px;
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
   line-height: 1.2;
   color: ${({ theme }) => theme.colors.tagText};
@@ -129,9 +131,8 @@ export const BulletList = styled.ul`
 `;
 
 export const Bullet = styled.li`
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.65;
   color: ${({ theme }) => theme.colors.muted};
-  margin-top: 0.25rem;
 `;
