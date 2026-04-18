@@ -1,0 +1,8 @@
+model = "gpt-5.4"
+model_reasoning_effort = "high"
+
+[plugins."github@openai-curated"]
+enabled = true
+
+[projects."/Users/seongtaehyeon/Desktop/사이드프로젝트/KeepLog"]
+trust_level = "trusted"

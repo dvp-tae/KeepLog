@@ -1,0 +1,3 @@
+display_name: KeepLog Redesign
+short_description: KeepLog 기존 화면을 유지하면서 단계적으로 구조와 시각 완성도를 개선합니다.
+default_prompt: KeepLog의 기존 화면을 재작성하지 말고 DESIGN.md 기준으로 점진적으로 개선해줘.
