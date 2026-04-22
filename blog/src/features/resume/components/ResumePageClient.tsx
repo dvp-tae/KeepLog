@@ -75,15 +75,27 @@ export default function ResumePageClient() {
             items={experienceItems}
             organization={experienceOrganization}
           />
-          <TimelineSection id="projects" title="Projects" items={projectItems} />
-          <CompactSection id="education" title="Education" items={educationItems} />
+          <TimelineSection
+            id="projects"
+            title="Projects"
+            items={projectItems}
+          />
+          <CompactSection
+            id="education"
+            title="Education"
+            items={educationItems}
+          />
           <CompactSection
             id="certification"
             title="Certification"
             items={certificationItems}
           />
           <CompactSection id="awards" title="Awards" items={awardItems} />
-          <CompactSection id="activity" title="Activity" items={activityItems} />
+          <CompactSection
+            id="activity"
+            title="Activity"
+            items={activityItems}
+          />
         </Main>
       </PageRoot>
     </Wrapper>

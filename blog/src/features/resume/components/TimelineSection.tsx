@@ -11,8 +11,8 @@ import {
   SectionHeader,
   SkillPill,
   SkillPills,
-  TimelineContent,
   TimelineItem as TimelineCard,
+  TimelineContent,
   TimelineList,
   TimelinePeriod,
   TimelineSubTitle,
@@ -55,12 +55,16 @@ export default function TimelineSection({
               <RowTop>
                 <div>
                   <TimelineTitle>{item.title}</TimelineTitle>
-                  {item.sub ? <TimelineSubTitle>{item.sub}</TimelineSubTitle> : null}
+                  {item.sub ? (
+                    <TimelineSubTitle>{item.sub}</TimelineSubTitle>
+                  ) : null}
                 </div>
                 <TimelinePeriod>{item.period}</TimelinePeriod>
               </RowTop>
 
-              {item.summary ? <TimelineSummary>{item.summary}</TimelineSummary> : null}
+              {item.summary ? (
+                <TimelineSummary>{item.summary}</TimelineSummary>
+              ) : null}
 
               <SkillPills>
                 {item.tags.map((tag) => (

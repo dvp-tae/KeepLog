@@ -1,6 +1,6 @@
+import matter from "gray-matter";
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
 import { remark } from "remark";
 import remarkGfm from "remark-gfm";
 import remarkHtml from "remark-html";
@@ -77,16 +77,14 @@ export const getSortedPosts = (): PostSummary[] => {
   return getAllMarkdownFiles()
     .map(toSummary)
     .filter((post): post is PostSummary => post !== null)
-    .sort(
-      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-    );
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 export const getPostBySlug = async (
-  slug: string,
+  slug: string
 ): Promise<PostDetail | null> => {
   const markdownFile = getAllMarkdownFiles().find(
-    (filename) => filename.replace(path.extname(filename), "") === slug,
+    (filename) => filename.replace(path.extname(filename), "") === slug
   );
 
   if (!markdownFile) {

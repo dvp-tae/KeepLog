@@ -21,14 +21,6 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-function getCookie(name: string): string | null {
-  if (typeof document === "undefined") return null;
-  const value = `; ${document.cookie}`;
-  const parts = value.split(`; ${name}=`);
-  if (parts.length === 2) return parts.pop()?.split(";").shift() || null;
-  return null;
-}
-
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [themeMode, setThemeMode] = useState<ThemeMode>("light");
   const [mounted, setMounted] = useState(false);
@@ -36,6 +28,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setMounted(true);
+
     const savedTheme = localStorage.getItem("theme") as ThemeMode | null;
     if (savedTheme) {
       setThemeMode(savedTheme);
@@ -46,13 +39,17 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       setThemeMode(prefersDark ? "dark" : "light");
     }
 
-    const mobileCookie = getCookie("isMobile");
-    if (mobileCookie !== null) {
-      setIsMobile(mobileCookie === "true");
-    } else {
-      const mobileRegex = /android|iphone|ipad|ipod|blackberry|opera mini/i;
-      setIsMobile(mobileRegex.test(navigator.userAgent));
-    }
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+    const updateIsMobile = () => {
+      setIsMobile(mobileQuery.matches);
+    };
+
+    updateIsMobile();
+    mobileQuery.addEventListener("change", updateIsMobile);
+
+    return () => {
+      mobileQuery.removeEventListener("change", updateIsMobile);
+    };
   }, []);
 
   useEffect(() => {
