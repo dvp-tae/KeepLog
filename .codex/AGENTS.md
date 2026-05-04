@@ -1,6 +1,6 @@
 # KeepLog Codex 운영 가이드
 
-이 디렉터리는 `blog` 애플리케이션에서 사용할 Codex 전용 설정 묶음입니다.
+이 디렉터리는 KeepLog 저장소 전체에서 사용할 Codex 전용 설정 묶음입니다.
 목표는 세 가지입니다.
 
 - KeepLog의 실제 기술 스택과 구조를 기준으로 작업 범위를 좁힙니다.
@@ -16,6 +16,15 @@
 - 디자인 자산: `blog/src/styles/theme.ts`, `blog/src/styles/index.css`
 - 화면 구조: `blog/src/features/*` 기반 feature-first 구성
 - 콘텐츠 소스: Markdown 게시물 + 포트폴리오/이력서 화면
+
+## 역할 구분
+
+- `config.toml`: 이 저장소에서 Codex가 사용할 기본 모델, 플러그인, trust 설정
+- `AGENTS.md`: `.codex` 내부 파일의 우선순위와 역할 안내
+- `DESIGN.md`: KeepLog UI 작업에만 적용되는 시각 규칙
+- `skills/`: 반복 작업을 좁은 목적별로 수행하기 위한 Codex 스킬
+- `agents/`: 서브 에이전트 역할 정의와 실행 제약
+- `docs/references/harness-engineering-system-prompt.md`: 현재 런타임 설정이 아니라, 하네스 설계의 배경 참고 문서
 
 ## 우선 적용 순서
 
@@ -55,3 +64,6 @@
 - `blog/package.json` 기준으로 존재하지 않는 라이브러리는 전제하지 않습니다.
 - 새 규칙을 추가할 때는 반드시 `DESIGN.md`와 관련 `SKILL.md`를 함께 갱신합니다.
 - 에이전트 설명은 추상 문장보다 이 저장소의 실제 경로와 제약을 우선합니다.
+- 실행에 직접 쓰이지 않는 참고 자료는 `.codex/`가 아니라 `docs/references/`에 둡니다.
+- GitHub 이슈 생성 시 제목과 본문은 항상 한글로 작성합니다.
+- 작업 브랜치명은 `taehyeon/${커밋컨벤션}/${이슈번호}` 형식을 기본값으로 사용합니다.

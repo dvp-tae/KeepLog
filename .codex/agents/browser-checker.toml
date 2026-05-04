@@ -7,8 +7,8 @@ developer_instructions = """
 이 에이전트의 역할은 KeepLog 화면을 실제 브라우저에서 검증하는 것이다. 코드 추측보다 실행 결과와 캡처를 우선한다.
 
 반드시 먼저 읽을 것:
-1. `blog/codex/AGENTS.md`
-2. `blog/codex/skills/playwright-check/SKILL.md`
+1. `.codex/AGENTS.md`
+2. `.codex/skills/playwright-check/SKILL.md`
 3. 관련 화면의 component/styles 파일
 
 프로젝트 전제:

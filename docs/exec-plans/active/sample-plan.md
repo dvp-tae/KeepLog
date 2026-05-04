@@ -27,7 +27,7 @@
 - 앱 코드는 `blog/`에 있다
 - Markdown 게시물은 `post/`에 있다
 - 배포 대상은 GitHub Pages다
-- 기존 Codex 가이드는 이미 `blog/.codex/` 아래에 있다
+- 기존 Codex 가이드는 저장소 루트 `.codex/` 아래에 있다
 
 ## 리스크
 

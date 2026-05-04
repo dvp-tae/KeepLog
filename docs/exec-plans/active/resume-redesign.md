@@ -62,7 +62,7 @@
 - 2026-04-29: `blog/`에서 `pnpm docs:check` 통과
 - 2026-04-29: Playwright로 `http://127.0.0.1:3001/resume` 데스크톱 렌더링과 콘솔 상태 확인
 - 2026-04-29: Playwright 1차 확인에서 Emotion component selector 런타임 오류를 발견했고, 연락처 링크 스타일을 수정한 뒤 콘솔 오류가 사라진 것을 재확인
-- 2026-04-29: `pnpm format:check`는 저장소 내 별도 파일인 `blog/.codex/DESIGN.md` 포맷 이슈로 전체 통과를 확인하지 못함
+- 2026-04-29: `pnpm format:check`는 저장소 내 별도 파일인 `.codex/DESIGN.md` 포맷 이슈로 전체 통과를 확인하지 못함
 
 ## 후속 작업
 
