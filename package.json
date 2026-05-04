@@ -1,0 +1,22 @@
+{
+  "name": "keeplog-repo-tools",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "check:docs": "pnpm --dir blog docs:check",
+    "check:format": "pnpm --dir blog format:check",
+    "check:lint": "pnpm --dir blog lint",
+    "check:type": "pnpm --dir blog typecheck",
+    "check:build": "pnpm --dir blog build",
+    "check:commit": "pnpm check:format && pnpm check:docs",
+    "check:push": "pnpm --dir blog verify",
+    "commit:all": "node scripts/commit-all.mjs",
+    "issue:create": "node scripts/github-issue.mjs",
+    "pr:create": "node scripts/github-pr.mjs"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
+    "husky": "^9.1.7"
+  }
+}

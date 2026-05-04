@@ -121,14 +121,18 @@ export const SocialLinkButton = styled.a`
 
 export const GithubButton = styled(SocialLinkButton)`
   background: ${({ theme }) =>
-    theme.colors.background === "#000000" ? theme.colors.surface : theme.colors.text};
+    theme.colors.background === "#000000"
+      ? theme.colors.surface
+      : theme.colors.text};
   border-color: ${({ theme }) => theme.colors.border};
   color: ${({ theme }) => theme.colors.background};
 `;
 
 export const LinkedInButton = styled(SocialLinkButton)`
   background: ${({ theme }) =>
-    theme.colors.background === "#000000" ? "rgba(41, 151, 255, 0.16)" : theme.colors.primary08};
+    theme.colors.background === "#000000"
+      ? "rgba(41, 151, 255, 0.16)"
+      : theme.colors.primary08};
   color: #f5f5f7;
 `;
 

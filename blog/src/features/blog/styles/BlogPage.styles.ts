@@ -1,5 +1,5 @@
-import Flex from "@/components/layout/Flex";
 import Text from "@/components/common/Text";
+import Flex from "@/components/layout/Flex";
 import styled from "@emotion/styled";
 import Link from "next/link";
 
