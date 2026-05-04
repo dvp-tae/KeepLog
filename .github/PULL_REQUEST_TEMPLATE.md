@@ -3,6 +3,10 @@
 - 변경 내용:
 - 이 변경이 필요한 이유:
 
+# 연관 이슈
+
+- close #이슈번호
+
 # 범위
 
 - 유형: `feature` / `bugfix` / `content` / `workflow` / `docs`

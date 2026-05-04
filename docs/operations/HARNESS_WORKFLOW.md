@@ -7,12 +7,13 @@
 ## 기본 흐름
 
 1. 요청을 받으면 `AGENTS.md`와 관련 문서를 먼저 읽는다
-2. 단순 작업이 아니면 `docs/exec-plans/active/`에 계획 문서를 만든다
-3. 코드를 수정한다
-4. 필요한 검증을 실행한다
-5. 계획과 문서를 갱신한다
-6. 규칙에 맞는 커밋 메시지로 커밋한다
-7. 브랜치를 푸시하고 PR을 만든다
+2. GitHub 이슈가 필요하면 먼저 생성하고, 바로 해당 이슈 번호 브랜치를 만든다
+3. 단순 작업이 아니면 `docs/exec-plans/active/`에 계획 문서를 만든다
+4. 코드를 수정한다
+5. 필요한 검증을 실행한다
+6. 계획과 문서를 갱신한다
+7. 규칙에 맞는 커밋 메시지로 커밋한다
+8. 브랜치를 푸시하고 PR을 만든다
 
 ## 예시 1: 새 블로그 태그 필터 기능 추가
 
@@ -92,11 +93,16 @@
 
 - 커밋 전에는 `pre-commit` 훅이 포맷과 문서를 점검한다
 - 커밋 메시지는 `type(scope): subject` 형태를 권장한다
+- GitHub 이슈를 만들면 바로 해당 이슈 번호 브랜치를 생성해 연결한다
+- GitHub 이슈를 만들 때는 `GITHUB_TOKEN` 기준 작성자를 자동 Assign 한다
 - 푸시 전에는 `pre-push` 훅이 `pnpm --dir blog verify`를 실행한다
 - PR 본문은 `.github/PULL_REQUEST_TEMPLATE.md`를 기준으로 채운다
+- PR을 만들 때는 `GITHUB_TOKEN` 기준 작성자를 자동 Assign 한다
+- PR 본문에는 연관 이슈를 닫는 `close #이슈번호`를 반드시 포함한다
 
 ## 관련 명령
 
 - 커밋: `pnpm commit:all -- "feat(harness): add issue and pr workflow"`
 - 이슈 생성: `GITHUB_TOKEN=... pnpm issue:create -- --title "제목" --body "본문"`
-- PR 생성: `GITHUB_TOKEN=... pnpm pr:create -- --title "제목" --body "본문" --base main`
+- 브랜치 생성: `git checkout -b taehyeon/feat/123 main`
+- PR 생성: `GITHUB_TOKEN=... pnpm pr:create -- --title "제목" --body "...\n\nclose #123" --base main`

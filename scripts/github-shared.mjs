@@ -1,5 +1,7 @@
 import { execFileSync } from "node:child_process";
 
+let cachedViewerLogin = null;
+
 export const runGit = (args) =>
   execFileSync("git", args, { encoding: "utf8" }).trim();
 
@@ -64,4 +66,17 @@ export const githubRequest = async ({ token, path, method = "POST", body }) => {
   }
 
   return data;
+};
+
+export const getAuthenticatedLogin = async (token) => {
+  if (cachedViewerLogin) return cachedViewerLogin;
+
+  const viewer = await githubRequest({
+    token,
+    path: "/user",
+    method: "GET",
+  });
+
+  cachedViewerLogin = viewer.login;
+  return cachedViewerLogin;
 };

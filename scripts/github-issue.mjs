@@ -1,4 +1,10 @@
-import { getRepoFullName, githubRequest, parseArgs, requireToken } from "./github-shared.mjs";
+import {
+  getAuthenticatedLogin,
+  getRepoFullName,
+  githubRequest,
+  parseArgs,
+  requireToken,
+} from "./github-shared.mjs";
 
 const args = parseArgs();
 const title = args.title?.trim();
@@ -12,11 +18,16 @@ if (!title) {
 const token = requireToken();
 const repo = getRepoFullName();
 const [owner, name] = repo.split("/");
+const assignee = await getAuthenticatedLogin(token);
 
 const issue = await githubRequest({
   token,
   path: `/repos/${owner}/${name}/issues`,
-  body: { title, body },
+  body: {
+    title,
+    body,
+    assignees: [assignee],
+  },
 });
 
 console.log(`Created issue #${issue.number}: ${issue.html_url}`);
