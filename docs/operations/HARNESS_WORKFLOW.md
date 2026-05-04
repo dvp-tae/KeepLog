@@ -92,11 +92,13 @@
 
 - 커밋 전에는 `pre-commit` 훅이 포맷과 문서를 점검한다
 - 커밋 메시지는 `type(scope): subject` 형태를 권장한다
+- GitHub 이슈 제목과 본문은 항상 한글로 작성한다
+- 작업 브랜치는 `taehyeon/${커밋컨벤션}/${이슈번호}` 형식을 사용한다
 - 푸시 전에는 `pre-push` 훅이 `pnpm --dir blog verify`를 실행한다
 - PR 본문은 `.github/PULL_REQUEST_TEMPLATE.md`를 기준으로 채운다
 
 ## 관련 명령
 
 - 커밋: `pnpm commit:all -- "feat(harness): add issue and pr workflow"`
-- 이슈 생성: `GITHUB_TOKEN=... pnpm issue:create -- --title "제목" --body "본문"`
+- 이슈 생성: `GITHUB_TOKEN=... pnpm issue:create -- --title "한글 제목" --body "한글 본문"`
 - PR 생성: `GITHUB_TOKEN=... pnpm pr:create -- --title "제목" --body "본문" --base main`

@@ -8,7 +8,7 @@ description: KeepLog의 기존 화면을 유지한 채 단계적으로 개선해
 
 ## 먼저 확인할 문서
 
-1. `blog/codex/DESIGN.md`
+1. `.codex/DESIGN.md`
 2. 수정 대상 feature의 view, styles, model 파일
 3. `blog/package.json`
 

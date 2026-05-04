@@ -7,6 +7,7 @@
 - Next.js static export와 GitHub Pages 관련 가이드
 - 이 프로젝트에서 사용하는 Emotion 스타일링 규칙
 - 게시물 프론트매터용 Markdown 작성 규칙
+- 하네스 설계에 사용한 생성 프롬프트와 참고 메모
 
 ## 운영 규칙
 
