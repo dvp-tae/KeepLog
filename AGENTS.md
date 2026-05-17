@@ -12,14 +12,16 @@
 
 ## 권장 읽기 순서
 
-1. `ARCHITECTURE.md`
-2. `docs/product-specs/index.md`
-3. `docs/design-docs/core-beliefs.md`
-4. `docs/frontend/FRONTEND.md`
-5. `docs/testing/TESTING.md`
-6. `docs/quality/QUALITY_SCORE.md`
-7. `docs/operations/RELIABILITY.md`
-8. 현재 작업과 관련된 `docs/exec-plans/active/` 문서
+1. `하네스엔지니어링.md`
+2. `ARCHITECTURE.md`
+3. `DESIGN.md`
+4. `docs/product-specs/index.md`
+5. `docs/design-docs/core-beliefs.md`
+6. `docs/frontend/FRONTEND.md`
+7. `docs/testing/TESTING.md`
+8. `docs/quality/QUALITY_SCORE.md`
+9. `docs/operations/RELIABILITY.md`
+10. 현재 작업과 관련된 `docs/exec-plans/active/` 문서
 
 ## 기본 명령
 
@@ -64,6 +66,8 @@
 
 ## 관련 문서
 
+- 하네스 방법론: `하네스엔지니어링.md`
+- 시각 언어/디자인 토큰 단일 출처: `DESIGN.md`
 - 시스템 개요: `ARCHITECTURE.md`
 - 디자인 원칙: `docs/design-docs/core-beliefs.md`
 - 실행 계획 운영: `docs/exec-plans/README.md`

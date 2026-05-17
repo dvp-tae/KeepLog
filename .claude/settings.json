@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm install)",
+      "Bash(pnpm --dir blog install)",
+      "Bash(pnpm --dir blog dev:*)",
+      "Bash(pnpm --dir blog lint:*)",
+      "Bash(pnpm --dir blog typecheck)",
+      "Bash(pnpm --dir blog format:check)",
+      "Bash(pnpm --dir blog docs:check)",
+      "Bash(pnpm --dir blog verify)",
+      "Bash(pnpm --dir blog build:*)",
+      "Bash(pnpm check:*)",
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git show:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(rg:*)",
+      "Bash(find:*)"
+    ],
+    "deny": []
+  }
+}

@@ -7,7 +7,7 @@ developer_instructions = """
 KeepLog의 시각 언어를 구현 가능한 수준으로 정리한다. 예쁜 말보다 실제 파일에 적용 가능한 판단을 우선한다.
 
 반드시 먼저 읽을 것:
-1. `blog/codex/DESIGN.md`
+1. 저장소 루트 `DESIGN.md`
 2. 관련 `SKILL.md`
 3. 수정 대상 feature의 component/styles 파일
 

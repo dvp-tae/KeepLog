@@ -8,7 +8,7 @@ description: KeepLog 블로그에서 신규 화면을 구현하거나 기존 화
 
 ## 먼저 확인할 문서
 
-1. `blog/codex/DESIGN.md`
+1. 저장소 루트 `DESIGN.md`
 2. 현재 수정할 feature의 컴포넌트, 스타일, 데이터 경로
 
 `DESIGN.md`와 충돌하면 항상 `DESIGN.md`를 우선합니다.
