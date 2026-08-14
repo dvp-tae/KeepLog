@@ -1,4 +1,3 @@
-import { LayoutShell } from "@/features/layout/components/LayoutShell";
 import { EmotionProvider } from "@/providers/EmotionProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import "@/styles/index.css";
@@ -71,9 +70,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="ko" className={pretendard.variable} suppressHydrationWarning>
       <body>
         <EmotionProvider>
-          <ThemeProvider>
-            <LayoutShell>{children}</LayoutShell>
-          </ThemeProvider>
+          <ThemeProvider>{children}</ThemeProvider>
         </EmotionProvider>
       </body>
     </html>

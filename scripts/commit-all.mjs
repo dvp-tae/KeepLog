@@ -7,7 +7,7 @@ if (!message) {
   process.exit(1);
 }
 
-execFileSync("git", ["add", "AGENTS.md", "ARCHITECTURE.md", ".github", "docs", "scripts", "blog"], {
+execFileSync("git", ["add", ".github", "scripts", "blog"], {
   stdio: "inherit",
 });
 execFileSync("git", ["commit", "-m", message], { stdio: "inherit" });
