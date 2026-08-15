@@ -12,7 +12,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: blog
+        working-directory: web
 
     steps:
       - name: Checkout
@@ -21,14 +21,14 @@ jobs:
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          package_json_file: blog/package.json
+          package_json_file: web/package.json
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-          cache-dependency-path: blog/pnpm-lock.yaml
+          cache-dependency-path: web/pnpm-lock.yaml
 
       - name: Install
         run: pnpm install --frozen-lockfile

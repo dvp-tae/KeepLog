@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "check:format": "pnpm --dir blog format:check",
-    "check:lint": "pnpm --dir blog lint",
-    "check:type": "pnpm --dir blog typecheck",
-    "check:build": "pnpm --dir blog build",
+    "check:format": "pnpm --dir web format:check",
+    "check:lint": "pnpm --dir web lint",
+    "check:type": "pnpm --dir web typecheck",
+    "check:build": "pnpm --dir web build",
     "check:commit": "pnpm check:format",
-    "check:push": "pnpm --dir blog verify",
+    "check:push": "pnpm --dir web verify",
     "commit:all": "node scripts/commit-all.mjs",
     "issue:create": "node scripts/github-issue.mjs",
     "pr:create": "node scripts/github-pr.mjs"
