@@ -1,3 +1,5 @@
 node_modules/
 .husky/_/
 .playwright-cli/
+.omc/
+.DS_Store

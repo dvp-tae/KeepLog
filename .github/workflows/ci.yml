@@ -7,31 +7,81 @@ on:
       - main
 
 jobs:
-  verify:
+  server:
     runs-on: ubuntu-latest
 
     defaults:
       run:
-        working-directory: web
+        working-directory: server
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: devpassword
+          POSTGRES_DB: app
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgresql+psycopg2://app:devpassword@localhost:5432/app
+      TEST_DATABASE_URL: postgresql+psycopg2://app:devpassword@localhost:5432/app_test
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          package_json_file: web/package.json
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: server/requirements*.txt
+
+      - name: Install
+        run: pip install -r requirements-dev.txt
+
+      - name: Lint
+        run: ruff check .
+
+      - name: Format
+        run: ruff format --check .
+
+      - name: Migrations apply on a clean DB
+        run: alembic upgrade head
+
+      - name: Test
+        run: pytest
+
+  front:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: front
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: pnpm
-          cache-dependency-path: web/pnpm-lock.yaml
+          node-version: 22
+          cache: yarn
+          cache-dependency-path: front/yarn.lock
 
       - name: Install
-        run: pnpm install --frozen-lockfile
+        run: yarn install --immutable
 
-      - name: Verify
-        run: pnpm verify
+      - name: Lint
+        run: yarn lint
+
+      - name: Typecheck
+        run: yarn tsc --noEmit

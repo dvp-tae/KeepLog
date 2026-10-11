@@ -3,12 +3,12 @@
   "private": true,
   "scripts": {
     "prepare": "husky",
-    "check:format": "pnpm --dir web format:check",
-    "check:lint": "pnpm --dir web lint",
-    "check:type": "pnpm --dir web typecheck",
-    "check:build": "pnpm --dir web build",
-    "check:commit": "pnpm check:format",
-    "check:push": "pnpm --dir web verify",
+    "check:front:lint": "cd front && yarn lint",
+    "check:front:type": "cd front && yarn tsc --noEmit",
+    "check:server:lint": "cd server && .venv/bin/ruff check . && .venv/bin/ruff format --check .",
+    "check:server:test": "cd server && .venv/bin/pytest -q",
+    "check:commit": "pnpm check:front:lint && pnpm check:server:lint",
+    "check:push": "pnpm check:front:type && pnpm check:server:test",
     "commit:all": "node scripts/commit-all.mjs",
     "issue:create": "node scripts/github-issue.mjs",
     "pr:create": "node scripts/github-pr.mjs"

@@ -6,7 +6,7 @@
 # 범위
 
 - 유형: `feature` / `bugfix` / `content` / `workflow` / `docs`
-- 사용자 영향 영역 또는 라우트:
+- 영향 영역: `front` / `server` / `both`
 - 비목표:
 
 # 실행 계획
@@ -16,17 +16,17 @@
 
 # 검증
 
-- [ ] `pnpm typecheck`
-- [ ] `pnpm lint`
-- [ ] `pnpm format:check`
-- [ ] `pnpm docs:check`
-- [ ] `pnpm build`
-- [ ] 브라우저 검증 완료
+- [ ] `pnpm check:front:lint`
+- [ ] `pnpm check:front:type`
+- [ ] `pnpm check:server:lint`
+- [ ] `pnpm check:server:test`
+- [ ] front: 시뮬레이터/디바이스 검증 완료
+- [ ] server: API 동작(DB 연결 포함) 검증 완료
 
 ## 메모
 
 - 실제 실행한 명령:
-- 확인한 라우트와 viewport:
+- 확인한 화면/엔드포인트:
 - 생략한 검증과 이유:
 
 # 문서
