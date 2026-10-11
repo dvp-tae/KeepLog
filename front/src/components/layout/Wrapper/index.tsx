@@ -8,8 +8,7 @@ export interface WrapperProps extends ViewProps {
   position?: 'relative' | 'absolute';
   // No 'fit-content' equivalent in RN layout — numeric px or '100%' only.
   maxWidth?: number | '100%';
-  // Fills the parent flex container instead of the web version's
-  // `calc(100dvh - 57px)` fixed-navbar offset, which has no RN equivalent.
+  // flex: 1 — fills the parent flex container.
   fullHeight?: boolean;
   backgroundColor?: string;
   padding?: SpacingKey;

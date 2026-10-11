@@ -1,8 +1,5 @@
-// Ported from the removed web/src/styles/theme.ts (Emotion CSS-in-JS on Next.js).
-// Colors are copied 1:1 (pure data, platform-agnostic). Typography values were
-// converted from CSS units to RN's absolute-number model: rem -> px (1rem = 16),
-// unitless line-height -> px (multiplier * fontSize), em letter-spacing -> px
-// (em * fontSize), since React Native's StyleSheet has no relative CSS units.
+// React Native's StyleSheet has no relative CSS units, so typography is stored as
+// absolute px: line-height = multiplier * fontSize, letter-spacing = em * fontSize.
 
 const LIGHT_COLORS = {
   background: '#f5f5f7',

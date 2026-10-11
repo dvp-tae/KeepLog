@@ -33,7 +33,7 @@ KeepLog/
 | `front/` | TypeScript | React Native (bare, not Expo) | yarn | — |
 | `server/` | Python 3.12 | FastAPI | pip + `.venv` | PostgreSQL 16 via SQLAlchemy, Alembic migrations |
 
-Infrastructure: AWS EC2 (Ubuntu) + Docker Compose + Nginx. Server-side resources are named `app` (e.g. `~/app/db`, container `app-postgres`), not `keeplog`.
+Infrastructure: AWS EC2 (Ubuntu) + Docker Compose + Nginx (Let's Encrypt). Server-side resources are named `app` (e.g. `~/app`, containers `app-postgres` / `app-api`). Details in [`docs/deployment-pipeline.md`](./docs/deployment-pipeline.md).
 
 ## Commit convention
 
@@ -45,11 +45,10 @@ Example: `feat(front): add login screen`, `fix(server): correct user query`.
 
 ## Root-level tooling
 
-The repo root also holds shared tooling — husky hooks, commitlint config, helper scripts under `scripts/` (commit-all, GitHub issue/PR helpers), and CI workflows under `.github/workflows/`. These previously pointed at a since-removed `web/` Next.js project and have been rewired to `front/`/`server/`:
+The repo root also holds shared tooling — husky hooks, commitlint config, helper scripts under `scripts/` (commit-all, GitHub issue/PR helpers), and CI workflows under `.github/workflows/`:
 
 - `pnpm check:front:lint` / `pnpm check:front:type` — lint/typecheck `front/` (via `yarn`)
 - `pnpm check:server:lint` / `pnpm check:server:test` — ruff lint+format check / pytest for `server/` (calls `server/.venv/bin/*` directly, so the venv must exist; tests need the local Postgres container running)
 - `pnpm check:commit` (pre-commit hook) — front lint + server lint
 - `pnpm check:push` (pre-push hook) — front typecheck + server tests
 - `.github/workflows/ci.yml` — front: lint + typecheck; server: ruff, `alembic upgrade head` on a fresh Postgres service, pytest
-- `.github/workflows/deploy-pages.yml` was removed — it published the old `web/` static blog to GitHub Pages, which no longer applies to a mobile app + API structure.

@@ -10,7 +10,7 @@ import Wrapper from '../src/components/layout/Wrapper';
 import Button from '../src/components/common/Button';
 import Text from '../src/components/common/Text';
 
-test('renders the ported design-system components without crashing', async () => {
+test('renders the design-system components without crashing', async () => {
   await act(() => {
     ReactTestRenderer.create(
       <ThemeProvider>

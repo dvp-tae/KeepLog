@@ -2,7 +2,7 @@
 
 > **Draft doc.** Initial orientation pass, not exhaustive.
 
-FastAPI API backed by PostgreSQL 16, accessed through SQLAlchemy 2.x (sync, psycopg2) with Alembic migrations. Python 3.12. Replaced an earlier NestJS + MySQL skeleton that was never built out.
+FastAPI API backed by PostgreSQL 16, accessed through SQLAlchemy 2.x (sync, psycopg2) with Alembic migrations. Python 3.12. Deployed as a Docker container on AWS EC2 behind Nginx — see [`docs/deployment-pipeline.md`](../docs/deployment-pipeline.md).
 
 ## Environment
 

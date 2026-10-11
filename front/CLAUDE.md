@@ -30,7 +30,7 @@ CocoaPods has **not** been installed yet (`ios/Pods/` doesn't exist) — the int
 
 ## Design tokens and common components (`src/`)
 
-Ported from the removed web/ project's Emotion design system (colors, typography, spacing/radius scales, `Flex`/`Wrapper` layout primitives, `Button`/`Text` common components), adapted to React Native syntax:
+Design tokens (colors, typography, spacing/radius scales), `Flex`/`Wrapper` layout primitives, and `Button`/`Text` common components:
 
 ```
 src/
@@ -40,36 +40,40 @@ src/
 │   └── ThemeProvider.tsx  # React context + styled-components/native ThemeProvider; useAppTheme() hook
 └── components/
     ├── common/
-    │   ├── Button/        # styled.Pressable, mirrors the web Button API (color/size/selected)
-    │   └── Text/           # styled.Text, mirrors the web Text API (variant/color/opacity)
+    │   ├── Button/        # styled.Pressable (color/size/selected)
+    │   └── Text/           # styled.Text (variant/color/opacity)
     └── layout/
-        ├── Flex/           # styled.View + Flex.Item, mirrors the web Flex/Flex.Item API
-        └── Wrapper/        # styled.View, mirrors the web Wrapper API (padding/maxWidth/center/etc.)
+        ├── Flex/           # styled.View + Flex.Item
+        └── Wrapper/        # styled.View (padding/maxWidth/center/etc.)
 ```
 
-Styling uses **`styled-components/native`** (`styled.View`/`styled.Text`/`styled.Pressable` template-literal API — the same shape as web's `@emotion/styled`, and as `@emotion/native`, which this originally shipped with before being swapped out; see "Why styled-components, not @emotion/native" below). Each component follows the original web split: `index.tsx` (typed props, defaults) + `X.styled.ts` (the styled component, reads `theme` via `ThemeProvider`). `App.tsx` is wrapped in `<ThemeProvider>` at the root.
+Styling uses **`styled-components/native`** (`styled.View`/`styled.Text`/`styled.Pressable` template-literal API). Each component is split into `index.tsx` (typed props, defaults) + `X.styled.ts` (the styled component, reads `theme` via `ThemeProvider`). `App.tsx` is wrapped in `<ThemeProvider>` at the root.
 
 Import from **`styled-components/native`**, not plain `styled-components` — the package ships separate web (`dist/`) and native (`native/dist/`) builds, each with its own `DefaultTheme` type; `src/theme/styled.d.ts` augments the `/native` one specifically, since augmenting the plain specifier doesn't reach it.
 
-Deliberate deviations from the web version (CSS concepts with no RN equivalent):
-- **Units**: rem → px (1rem = 16), unitless line-height → px, em letter-spacing → px — RN's StyleSheet has no relative CSS units, so `theme.ts` stores pre-computed absolute numbers instead of CSS strings.
-- **`gap`/`padding`/`radius` tokens**: were CSS custom properties (`var(--gap-N)` etc.); now plain numeric scales (`SPACING`, `RADIUS` in `theme.ts`), each key still `N -> N*4`px like the original.
-- **No hover/cursor**: `Button` dropped the web version's `:hover`/`cursor` styling (no pointer device on mobile); pressed-state feedback (e.g. via `Pressable`'s `style={({pressed}) => ...}` callback) isn't implemented yet.
-- **`Wrapper.position`**: narrowed to `'relative' | 'absolute'` — Yoga (RN's layout engine) has no `'fixed'`/`'sticky'`.
-- **`Wrapper.maxWidth`**: narrowed to `number | '100%'` — no `'fit-content'`/`'max-content'`/`'min-content'` in RN layout.
-- **`Wrapper.fullHeight`**: now just `flex: 1` (fill the parent flex container) instead of the web version's `calc(100dvh - 57px)` fixed-navbar offset, which assumed a specific web layout that doesn't exist here.
-- **Theme persistence**: `ThemeProvider` uses RN's built-in `useColorScheme()` for the system preference and an in-memory override for manual toggling — **not persisted** across app restarts (the web version used `localStorage`). Persisting would need `@react-native-async-storage/async-storage`, a native module not installed yet (would require a `pod install` — see the iOS setup caveat above).
-- **No shadow token**: the web version referenced a `--shadow-card` CSS var that was never actually defined anywhere in `web/`, so it wasn't ported. Add elevation/shadow tokens (RN needs `shadowColor`/`shadowOffset`/`shadowOpacity`/`shadowRadius` + Android `elevation`) once a real value exists to port.
+React Native layout constraints reflected in the tokens and props:
+- **Units**: RN's StyleSheet has no relative CSS units, so `theme.ts` stores absolute px numbers — font sizes in px, line-height and letter-spacing pre-multiplied by the font size.
+- **Spacing/radius**: plain numeric scales (`SPACING`, `RADIUS` in `theme.ts`), each key `N -> N*4`px.
+- **No hover/cursor**: there is no pointer device; pressed-state feedback (e.g. via `Pressable`'s `style={({pressed}) => ...}` callback) isn't implemented yet.
+- **`Wrapper.position`**: `'relative' | 'absolute'` only — Yoga (RN's layout engine) has no `'fixed'`/`'sticky'`.
+- **`Wrapper.maxWidth`**: `number | '100%'` only — no `'fit-content'`/`'max-content'`/`'min-content'` in RN layout.
+- **`Wrapper.fullHeight`**: `flex: 1`, i.e. fills the parent flex container.
+- **Theme persistence**: `ThemeProvider` uses RN's built-in `useColorScheme()` for the system preference and an in-memory override for manual toggling — **not persisted** across app restarts. Persisting would need `@react-native-async-storage/async-storage`, a native module not installed yet (would require a `pod install` — see the iOS setup caveat above).
+- **No shadow token** yet. When one is needed, RN needs `shadowColor`/`shadowOffset`/`shadowOpacity`/`shadowRadius` plus Android `elevation`.
 
-### Why styled-components, not @emotion/native
+### Why styled-components
 
-This design-system layer originally shipped on `@emotion/native`, then was swapped to **`styled-components`** (6.5.3): `@emotion/native` hasn't had a real code release since ~2023 and its bundled types still reference long-removed RN APIs (`DatePickerIOS`, `ListView`, etc.). `styled-components` is released regularly (last publish within the last month as of this writing), has ~200x the weekly downloads, and its native build is a near-1:1 API match (`styled.View`/`styled.Text`/`styled.Pressable` template literals, `ThemeProvider`, `useTheme`), so the swap was mechanical — import source changed, component code didn't. Both libraries' RN runtimes are actually built on the same underlying CSS-string parser (`css-to-react-native`), so this swap is about the wrapper library's maintenance, not the parsing engine underneath.
+`styled-components` (6.5.3) is actively released, widely used, and its native build provides the template-literal API (`styled.View`/`styled.Text`/`styled.Pressable`, `ThemeProvider`, `useTheme`) this layer is written in. `@emotion/native` offers the same API shape but hasn't had a real code release since ~2023 and its bundled types still reference long-removed RN APIs (`DatePickerIOS`, `ListView`, etc.).
 
-Other RN styling libraries considered and rejected for this project: `react-native-unistyles` (actively maintained, but a `StyleSheet.create`-based API, not styled-components-shaped — would mean rewriting every component — and pulls in `react-native-nitro-modules` + `react-native-reanimated` as native-module peers, which need `pod install`, not yet run here); `nativewind` (Tailwind `className` utility strings — a philosophy change away from the existing token-based `theme.ts`); `@shopify/restyle` (itself stale, ~18 months without a release); `tamagui` (a full universal UI-kit/compiler, disproportionate to replacing just a styling layer).
+Other RN styling libraries considered and rejected: `react-native-unistyles` (a `StyleSheet.create`-based API rather than styled-components-shaped, and pulls in `react-native-nitro-modules` + `react-native-reanimated` as native-module peers that need `pod install`); `nativewind` (Tailwind `className` utility strings, a different model from the token-based `theme.ts`); `@shopify/restyle` (~18 months without a release); `tamagui` (a full universal UI-kit/compiler, disproportionate for a styling layer).
 
 A regression test lives at `__tests__/designSystem.test.tsx` — renders `Wrapper`/`Flex`/`Flex.Item`/`Button`/`Text` together inside `ThemeProvider` via `react-test-renderer`, catching template-string/CSS-parsing errors from the styling layer. Re-run it after any styling-library or RN/React upgrade.
 
-No `@/` path alias is configured (the web version used `@/styles/theme` etc.) — Metro doesn't read `tsconfig.json` paths natively, and adding one needs `babel-plugin-module-resolver`. Current code uses relative imports; revisit if the relative paths get unwieldy.
+No `@/` path alias is configured — Metro doesn't read `tsconfig.json` paths natively, and adding one needs `babel-plugin-module-resolver`. Current code uses relative imports; revisit if the relative paths get unwieldy.
+
+## API integration
+
+The app talks to the FastAPI server in `server/` over HTTPS. Error responses always use `{"error": {"code", "message", "details?"}}` — branch on `error.code` and map it to user-facing copy in the app rather than displaying the server's English `message`. See `server/README.md` for the code list.
 
 ## TypeScript conventions
 
